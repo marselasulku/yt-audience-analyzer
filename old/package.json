@@ -1,0 +1,12 @@
+{
+  "name": "tempscripts",
+  "version": "1.0.0",
+  "description": "temporary one-off scripts",
+  "main": "ytAnalytics.js",
+  "author": "marsela",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "109.0.1",
+    "json2csv": "^5.0.7"
+  }
+}
