@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/yt-audience-analyzer/static/css/main.073c9b0a.css",
+    "main.js": "/yt-audience-analyzer/static/js/main.06f8f5fa.js",
+    "static/media/logo.svg": "/yt-audience-analyzer/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/yt-audience-analyzer/index.html",
+    "main.073c9b0a.css.map": "/yt-audience-analyzer/static/css/main.073c9b0a.css.map",
+    "main.06f8f5fa.js.map": "/yt-audience-analyzer/static/js/main.06f8f5fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.06f8f5fa.js"
+  ]
+}
