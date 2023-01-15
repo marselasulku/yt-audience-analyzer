@@ -1,7 +1,7 @@
 {
   "name": "yt-audience-analyzer",
   "version": "0.1.0",
-  "homepage": "https://marselasulku.github.io/yt-audience-analyzer",
+  "homepage": "https://marselasulku.github.io",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
