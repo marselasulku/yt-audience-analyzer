@@ -1,23 +1,49 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
+
+import { google } from 'googleapis';
+
 import './App.css';
 
-function App() {
+
+function App() {  
+  const [user, setUser] = useState({});
+
+  function handleSignInResponse(response) {
+    console.log("response ", response)
+    // let userObject = jwt_decode(response.credential);
+    // console.log('user', userObject);
+    // setUser(userObject);
+  };
+
+  // useEffect(() => {
+  //   /* global google */ 
+  //   google.accounts.id.initialize({
+  //     client_id: '88893072292-5nurm0kr7lnfcp27vm4a2ge86e6fff5p.apps.googleusercontent.com',
+  //     callback: handleSignInResponse
+  //   });
+
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("signInDiv"),
+  //     { theme: "outline", size: "large" }
+  //   );
+
+  //   google.accounts.id.prompt();
+  // }, [])
+
+
+  useEffect(() => {
+    const client = google.accounts.oauth2.initTokenClient({
+      client_id: 'YOUR_GOOGLE_CLIENT_ID',
+      scope: 'https://www.googleapis.com/auth/calendar.readonly',
+      callback: handleSignInResponse,
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="signInDiv"></div>
+      <button onclick="client.requestAccessToken();">Authorize me</button>
     </div>
   );
 }
