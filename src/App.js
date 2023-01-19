@@ -1,8 +1,7 @@
+import './App.css';
 import { useEffect, useState } from 'react';
 
-const ytAnalytics = require('@googleapis/youtubeanalytics')
-
-import './App.css';
+// const ytAnalytics = require('@googleapis/youtubeanalytics')
 
 function App() {  
   const [client, setClient] = useState(null);
@@ -29,40 +28,40 @@ function App() {
     setClient(c);
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    async function fetchData () { 
-      const youtubeAnalytics = ytAnalytics({ version: "v2", accessToken });
+  //   async function fetchData () { 
+  //     const youtubeAnalytics = ytAnalytics({ version: "v2", accessToken });
       
-      console.log('fetching videos');
+  //     console.log('fetching videos');
     
-      const allVideos = await youtubeAnalytics.reports
-        .query({
-          dimensions: "video",
-          endDate: "2023-01-17",
-          ids: "channel==MINE",
-          maxResults: 130,
-          metrics: "estimatedMinutesWatched,views,likes,subscribersGained",
-          sort: "-estimatedMinutesWatched",
-          startDate: "2022-12-01"
-        })
-        .then(data => { return data.data; })
-        .catch(error => console.log("The API returned an error: ", error.errors));
+  //     const allVideos = await youtubeAnalytics.reports
+  //       .query({
+  //         dimensions: "video",
+  //         endDate: "2023-01-17",
+  //         ids: "channel==MINE",
+  //         maxResults: 130,
+  //         metrics: "estimatedMinutesWatched,views,likes,subscribersGained",
+  //         sort: "-estimatedMinutesWatched",
+  //         startDate: "2022-12-01"
+  //       })
+  //       .then(data => { return data.data; })
+  //       .catch(error => console.log("The API returned an error: ", error.errors));
     
-      console.log(`fetched ${allVideos.rows.length} videos`);
-      console.log(`videos ${allVideos}`)
-    }
+  //     console.log(`fetched ${allVideos.rows.length} videos`);
+  //     console.log(`videos ${allVideos}`)
+  //   }
 
-    fetchData()
+  //   fetchData()
  
-  }, [accessToken]);
+  // }, [accessToken]);
 
 
   return (
     <div className="App">
 
       { client ? 
-        <button type="button" class="login-with-google-btn" onClick={() => client.requestAccessToken()}>Sign in with Google</button> :
+        <button type="button" className="login-with-google-btn" onClick={() => client.requestAccessToken()}>Sign in with Google</button> :
         null 
       }
     </div> 
