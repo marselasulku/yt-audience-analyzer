@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
 
+const ytAnalytics = require('@googleapis/youtubeanalytics')
+
 import './App.css';
 
 function App() {  
   const [client, setClient] = useState(null);
+
+  // may want to move this to localstorage or cookie, same-site cookie 
+  const [accessToken, setAccessToken] = useState(null);
+
+
   function handleSignInResponse(response) {
     console.log("response ", response);
+    setAccessToken(accessToken);
     // use access token to make requests
   };
 
@@ -20,6 +28,34 @@ function App() {
 
     setClient(c);
   }, []);
+
+  useEffect(() => {
+    
+    async function fetchData () { 
+      const youtubeAnalytics = ytAnalytics({ version: "v2", accessToken });
+      
+      console.log('fetching videos');
+    
+      const allVideos = await youtubeAnalytics.reports
+        .query({
+          dimensions: "video",
+          endDate: "2023-01-17",
+          ids: "channel==MINE",
+          maxResults: 130,
+          metrics: "estimatedMinutesWatched,views,likes,subscribersGained",
+          sort: "-estimatedMinutesWatched",
+          startDate: "2022-12-01"
+        })
+        .then(data => { return data.data; })
+        .catch(error => console.log("The API returned an error: ", error.errors));
+    
+      console.log(`fetched ${allVideos.rows.length} videos`);
+      console.log(`videos ${allVideos}`)
+    }
+
+    fetchData()
+ 
+  }, [accessToken]);
 
 
   return (
