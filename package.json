@@ -4,7 +4,7 @@
   "homepage": "https://marselasulku.github.io",
   "private": true,
   "dependencies": {
-    "@googleapis/youtubeanalytics": "^2.0.0",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

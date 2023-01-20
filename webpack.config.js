@@ -16,6 +16,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    fallback: {
+      "child_process": false,
+      "tls": require.resolve('tls'),
+      "fs": false,
+      "http2": false,
+      "net": false,
+    }
   },
   module: {
     rules: [
