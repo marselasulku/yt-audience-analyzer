@@ -4,6 +4,10 @@
   "homepage": "https://marselasulku.github.io",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.5",
+    "@mui/x-data-grid": "^5.17.20",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
